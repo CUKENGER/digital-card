@@ -13,12 +13,11 @@ async function main() {
 
   await prisma.profile.create({
     data: {
-      name: 'Иван Иванов',
+      name: 'Андрей Чувашов',
       description: 'Backend-разработчик, Node.js / TypeScript.',
       links: {
         create: [
-          { label: 'GitHub', url: 'https://github.com/username' },
-          { label: 'LinkedIn', url: 'https://linkedin.com/in/username' },
+          { label: 'GitHub', url: 'https://github.com/CUKENGER' },
         ],
       },
       skills: {
@@ -33,8 +32,8 @@ async function main() {
       experience: {
         create: [
           {
-            company: 'ООО Рога и Копыта',
-            position: 'Backend Developer',
+            company: 'ООО ИТ-Финанс',
+            position: 'Fullstack Developer',
             startDate: new Date('2022-01-01'),
             endDate: null,
             achievements: ['Спроектировал GraphQL API', 'Внедрил CI/CD'],
@@ -45,7 +44,7 @@ async function main() {
         create: [
           {
             name: 'Digital Card',
-            url: 'https://github.com/username/digital-card',
+            url: 'https://github.com/CUKENGER/digital-card',
           },
         ],
       },
