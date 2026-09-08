@@ -1,0 +1,7 @@
+{
+  "iptables": false,
+  "ip6tables": false,
+  "bridge": "none",
+  "storage-driver": "vfs",
+  "features": { "containerd-snapshotter": false }
+}

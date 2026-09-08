@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:16-alpine
+    network_mode: host
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -12,11 +13,12 @@ services:
       retries: 5
 
   app:
-    build: .
+    build:
+      context: .
+      network: host
+    network_mode: host
     depends_on:
       db:
         condition: service_healthy
     environment:
       DATABASE_URL: 'postgresql://postgres:postgres@db:5432/digital_card?schema=public'
-    ports:
-      - '127.0.0.1:3000:3000'
