@@ -4,15 +4,15 @@ Backend-визитка на NestJS + Prisma + GraphQL.
 
 ## Запуск
 
-\`\`\`bash
+```bash
 docker compose up --build
-\`\`\`
+```
 
 Apollo Sandbox: http://localhost:3000/graphql
 
 ## Пример запроса
 
-\`\`\`graphql
+```graphql
 query {
   profile {
     name
@@ -23,7 +23,7 @@ query {
     projects { name url }
   }
 }
-\`\`\`
+```
 
 ## Стек
 Git, TypeScript, Node.js, NestJS, Prisma, GraphQL, Docker.
