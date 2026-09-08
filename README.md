@@ -8,7 +8,7 @@ Backend-визитка на NestJS + Prisma + GraphQL.
 docker compose up --build
 ```
 
-Apollo Sandbox: [http://localhost:3000/graphql](https://digital-card.dns.army/graphql)
+Apollo Sandbox: [https://digital-card.dns.army/graphql](https://digital-card.dns.army/graphql)
 
 ## Пример запроса
 
