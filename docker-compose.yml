@@ -19,4 +19,4 @@ services:
     environment:
       DATABASE_URL: 'postgresql://postgres:postgres@db:5432/digital_card?schema=public'
     ports:
-      - '3000:3000'
+      - '127.0.0.1:3000:3000'
