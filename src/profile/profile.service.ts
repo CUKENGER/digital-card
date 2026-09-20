@@ -6,7 +6,21 @@ export class ProfileService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getProfile() {
-    const profile = await this.prisma.profile.findFirst();
+    const profile = await this.prisma.profile.findFirst({
+      orderBy: {
+        id: 'asc',
+      },
+      include: {
+        links: true,
+        skills: true,
+        experience: {
+          orderBy: {
+            startDate: 'desc',
+          },
+        },
+        projects: true,
+      },
+    });
     if (!profile) throw new NotFoundException('Profile not found');
     return profile;
   }

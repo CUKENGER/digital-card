@@ -1,11 +1,11 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field, Int, GraphQLISODateTime } from '@nestjs/graphql';
 
 @ObjectType()
 export class Experience {
   @Field(() => Int) id: number;
-  @Field() company: string;
-  @Field() position: string;
-  @Field() startDate: Date;
-  @Field({ nullable: true }) endDate?: Date;
-  @Field(() => [String]) achievements: string[];
+  @Field() company!: string;
+  @Field() position!: string;
+  @Field(() => GraphQLISODateTime) startDate!: Date;
+  @Field(() => GraphQLISODateTime, { nullable: true }) endDate?: Date | null;
+  @Field(() => [String]) achievements!: string[];
 }
