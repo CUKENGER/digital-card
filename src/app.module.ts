@@ -17,6 +17,7 @@ import { HealthModule } from './health/health.module';
       validationSchema: envValidationSchema,
     }),
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
+      driver: ApolloDriver,
       imports: [ConfigModule],
       inject: [ConfigService],
 
@@ -24,8 +25,6 @@ import { HealthModule } from './health/health.module';
         const isProduction = config.get<string>('NODE_ENV') === 'production';
 
         return {
-          driver: ApolloDriver,
-
           autoSchemaFile: isProduction
             ? true
             : join(process.cwd(), 'src/schema.gql'),
