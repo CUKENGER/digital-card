@@ -9,7 +9,7 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
-  app.use(helmet);
+  app.use(helmet());
 
   app.enableCors({
     origin: configService
