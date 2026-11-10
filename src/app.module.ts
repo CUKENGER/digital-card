@@ -29,10 +29,8 @@ import { HealthModule } from './health/health.module';
             ? true
             : join(process.cwd(), 'src/schema.gql'),
           sortSchema: true,
-          introspection: !isProduction,
-          plugins: isProduction
-            ? []
-            : [ApolloServerPluginLandingPageLocalDefault()],
+          introspection: true,
+          plugins: [ApolloServerPluginLandingPageLocalDefault()],
         };
       },
     }),
