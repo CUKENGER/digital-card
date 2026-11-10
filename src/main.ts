@@ -3,20 +3,27 @@ import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
+import type { Request, Response, NextFunction } from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const configService = app.get(ConfigService);
 
-  app.use(helmet());
+  const defaultHelmet = helmet();
+  const sandboxHelmet = helmet({ contentSecurityPolicy: false });
+
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    const middleware =
+      req.method === 'GET' && req.path === '/graphql'
+        ? sandboxHelmet
+        : defaultHelmet;
+
+    middleware(req, res, next);
+  });
 
   app.enableCors({
-    origin: configService
-      .get<string>('CORS_ORIGIN', 'http://localhost:3001')
-      .split(',')
-      .map((origin) => origin.trim()),
-
+    origin: '*',
     credentials: false,
   });
 
