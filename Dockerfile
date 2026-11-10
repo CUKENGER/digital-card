@@ -1,8 +1,9 @@
 # --- Базовый образ ---
 FROM node:20-alpine AS base
 WORKDIR /app
+
 COPY package*.json ./
-COPY prisma ./prisma/
+RUN npm ci --omit=dev && npm i -g tsx
 
 # --- Режим разработки ---
 FROM base AS dev
@@ -36,4 +37,4 @@ COPY prisma ./prisma
 EXPOSE 3000
 
 # Автоматический накат миграций, сидирование и запуск NestJS
-CMD ["sh", "-c", "prisma migrate deploy && npx prisma db seed && node dist/main"]
+CMD ["sh", "-c", "./node_modules/.bin/prisma -v && ./node_modules/.bin/prisma migrate deploy && ./node_modules/.bin/prisma db seed && node dist/main"]
